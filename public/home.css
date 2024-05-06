@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+  }
+  .formbold-mb-5 {
+    margin-bottom: 20px;
+  }
+  .formbold-pt-3 {
+    padding-top: 12px;
+  }
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 550px;
+    width: 100%;
+    background: white;
+  }
+  .formbold-form-label {
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074d;
+    margin-bottom: 12px;
+  }
+  .formbold-form-label-2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .formbold-form-input {
+    width: 100%;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    font-weight: 500;
+    font-size: 16px;
+    color: #6b7280;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .formbold-btn {
+    text-align: center;
+    font-size: 16px;
+    border-radius: 6px;
+    padding: 14px 32px;
+    border: none;
+    font-weight: 600;
+    background-color: #6a64f1;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .formbold--mx-3 {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+  .formbold-px-3 {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .flex {
+    display: flex;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .w-full {
+    width: 100%;
+  }
+  @media (min-width: 540px) {
+    .sm\:w-half {
+      width: 50%;
+    }
+  }
+  .crop {
+            margin: 20px 20px 20px 40px;
+            width: 95%;
+            height: auto;
+            border: 1px solid;
+            border-radius: 10px;
+        }
+
+        h3 {
+            font-size: 40px;
+            margin: 0px 0px 0px 50px;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+     
+        .pbtn{
+            width: 300px;
+            margin: 10px 10px 10px 10px;
+            height: 50px;
+            background-color: #249fec;
+        }
+
+        .header {
+            background-color: rgb(17, 36, 240);
+            height: 11vh;
+            display: flex;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: montserrat;
+        }
+
+        nav {
+            background: #09a315;
+            height: 100px;
+            width: 100%;
+        }
+
+        label.logo {
+            color: white;
+            font-size: 35px;
+            line-height: 80px;
+            padding: 0 50px; /* Adjusted padding for logo */
+            font-weight: bold;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 20px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        a.active, a:hover {
+           
+            transition: .5s;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 20px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 952px) {
+            label.logo {
+                font-size: 30px;
+                padding-left: 30px; /* Adjusted padding for logo */
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 858px) {
+            .checkbtn {
+                display: block;
+            }
+
+            ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #2c3e50;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+
+            a:hover, a.active {
+                background: none;
+                color: #2b00ff;
+            }
+
+            #check:checked ~ ul {
+                left: 0;
+            }
+        }
+
+        section {
+            background: url(bg1.jpg) no-repeat;
+            background-size: cover;
+            height: calc(100vh - 80px);
+        }
+
+        img {
+            float: right;
+            width: 450px;
+            margin: -220px 20px 70px 20px;
+            height: 230px;
+        }
+        table{
+            width: 1400px;
+            height: auto;
+        }
+        button{
+            cursor: pointer;
+        }
+        .sone{
+            width: 100%;
+            height: 900px;
+        }
+        .self{
+            width: 30%;
+            height: 900px;
+            background-color: #1ba7ed;
+            float: left;
+
+            border: 1px solid black;
+            font-size: 30px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+            justify-content: center;
+
+        }
+        .mimg{
+            width: 400px;
+            background-image: url('https://www.corporatevision-news.com/wp-content/uploads/2021/07/Office-Manager.jpg');
+            border-radius: 10px;
+            margin: 30px 10px 20px 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 25% 75%;
+            align-items: center;
+            height: 400px;
+            border: 1px solid;
+        }
+        .details{
+            width: 400px;
+            height: 300px;
+            margin: 0px 0px 0px 80px;
+            text-align: left;
+            padding:  5px;
+            background-color: white;
+            border-radius: 5px;
+            
+        }
+        .minfo{
+            width: 70%;
+            height: 900px;
+            background-color: #ffffff;
+            float: right;
+
+            border: 1px solid black;
+            font-size: 30px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            text-align: center;
+            justify-content: center;
+        }
+        .availmoney{
+            border: 1px solid black;
+            width: 400px;
+            height: 70px;
+            margin: 20px 20px 20px 20px;
+            float: right;
+            background-color: #249fec;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .totalmoney{
+            border: 1px solid black;
+            width: 400px;
+            height: 70px;
+            margin: 20px 20px 20px 20px;
+            float: left;
+            background-color: #edf500;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+     .points{
+        width: 90%;
+        height: auto;
+        margin: 30px 30px 30px 80px;
+        border: 1px solid;
+        text-align: left;
+        font-size: 23px;
+        font-family: Arial, Helvetica, sans-serif;
+       color: blue;
+        
+
+        
+     }
+
+   
+     .editable-input {
+        border: none;
+        width: 100%;
+        background-color: transparent;
+        text-align: center;
+        font-size: 16px;
+      }
+  
+      .editable-input:focus {
+        outline: none;
+        border: 1px solid #2b00ff;
+      }
+  
+      #totalAmount {
+        font-weight: bold;
+      }
+     
+      p {
+        margin: 20px 50px 100px 50px;
+        width: 60%;
+        height: 200px;
+        background-color: rgb(216, 215, 215);
+        font-size: 30px;
+    }
+    h3 a .space {
+      pointer-events: none;
+      color: white;
+      text-decoration: none;
+      cursor: none;
+  }
+  h3 a .space:hover {
+    pointer-events: none;
+    color: white;
+    background-color: white;
+    text-decoration: none;
+    cursor: none;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+nav{
+  display: flex;
+  margin-left:62%;
+  color: rgb(0, 0, 0);
+}
+a{
+  left: 90%;
+  margin: 40px 10px 20px 10px;
+  text-decoration: none;
+  font-size:x-large;
+  background-color: aqua;
+  color: black;
+  border-radius:10px;
+}
+.box{
+  width: 400px;
+  height: 500px;
+  border: 1px solid black;
+  list-style: none;
+  font-size: 30px;
+  margin: 30px 30px 30px 30px;
+  border-radius:15px ;
+
+}
+.header{
+  background-color: rgb(17, 36, 240);
+  height:11vh;
+  display: flex;
+}
+h5{
+  position: relative;
+  top:10px;
+  font-size: 40px;
+  margin-left:10px;
+  color:rgb(255, 255, 255);
+  margin: 0px 20px 0px 30px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#sdate{
+  margin-left:40px;
+  width:50%;
+}
+.idate{
+  width:50%;
+}
+.boxes{
+  display: grid;
+  grid-template-columns: 500px 500px 500px;
+  
+}
+.bimg{
+  width: 400px;
+  height: 250px;
+  margin: -1px 10px 0px -1px;
+  border: 2px solid rgb(232, 232, 232);
+
+  border-radius: 15px ;
+  background-image: url('https://www.alanboswell.com/wp-content/uploads/farm-tractor-harvest-combine-field-768x432.jpg.webp');
+ background-size: cover;
+}
+.content{
+  height: 300px;
+  width: 500px;
+  font-size: 30px;
+  margin: 15px 15px 15px 15px;
+
+}
+
+.btn2{
+  background-color: rgb(28, 255, 7);
+  margin:10px 10px 20px 10px;
+  font-size: 25px;
+  color: aliceblue;
+  
+  
+}
+.btn1{
+  background-color: rgb(12, 66, 246);
+  margin: 0px 130px 20px -10px;
+  font-size: 30px;
+  width: 390px;
+  height: 45px;
+  color: aliceblue;
+  
+  
+}
+.modal-dialog {
+  width: 80% !important; /* Set the width of the modal */
+}
+
+.boxes {
+  display: grid;
+  grid-template-columns: 500px 500px 500px;
+  width: 80%; /* Set the width of the table */
+  margin: 0 auto; /* Center the table */
+}
+.btn:hover{
+  background-color: rgb(13, 178, 29);
+  color: white;
+}
+.btni{
+  background-color: rgb(59, 255, 48);
+  width: auto;
+  height: 60px;
+  font-size: 20px;
+  margin: 10px;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+  <% if (investor) { %>
+    <div class="header">
+<h5>Available Managers</h5>
+<nav>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+  <h1 class="modal-title fs-5" id="exampleModalLabel">Add new Sport</h1>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+  <form action="/invest?id=<%= id %>" method="post">
+Name of the Investor:<input class="idate" type="text" name="name"><br>
+<input type="hidden" id="cropIdInput" name="cid" value="">
+<input type="hidden" id="IdInput" name="iid" value="<%=id%>">
+<br>
+Amount : <input class="idate" type="number" name="amount"><br>
+<input type="submit" class="btn btn-primary" value="Submit"><br>
+  </form>
+    </div>
+</div>
+  </div>
+    </div>
+    <a href="/myinvestreq?id=<%= id %>&sid=<%= sid %> " class="btn btni" >Investments</a>
+    <a href="/logout" class=" btn btn2">Logout</a>
+</nav>
+  </div>
+  
+  <ul class="boxes">
+    <% crop.forEach(sport => { %>
+      <% if (sport.sum < 1000000) { %>
+        <li class="box">
+          <div class="bimg"></div>
+          <div class="content">
+            <strong>Maintainer : </strong> <%= sport.name %> <br>
+            <strong> Type: </strong><%= sport.crop %> <br>
+            <strong> Village: </strong><%= sport.village %> <br>
+            <strong> Acres : </strong>10 <br>
+            <div class="forms">
+              <!-- Pass the sport.id to the openInvestModal function -->
+              <button type="button" class="btn btn1" onclick="openInvestModal('<%= sport.id %>')">Invest</button>
+            </div>
+          </div>
+        </li>
+      <% } %>
+    <% }); %>
+  </ul>
+  
+  
+  <script>
+function openInvestModal(cropId) {
+    // Set the cropId in a hidden field
+    document.getElementById('cropIdInput').value = cropId;
+    // Trigger the modal
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    myModal.show();
+}
+  </script>
+  <% } else { %>
+    <script>
+     
+      window.location.href = "/invest/?id=20"; // Redirect to the home page or another appropriate page
+    </script>
+  <% } %>
+  
+  </body>
+</html>

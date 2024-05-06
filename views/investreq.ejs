@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'lato', sans-serif;
+          }
+          .container {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+          
+          h2 {
+            font-size: 26px;
+            margin: 20px 0;
+            text-align: center;
+            small {
+              font-size: 0.5em;
+            }
+          }
+          
+          .responsive-table {
+            li {
+              border-radius: 3px;
+              padding: 25px 30px;
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 25px;
+            }
+            .table-header {
+              background-color: #95A5A6;
+              font-size: 14px;
+              text-transform: uppercase;
+              letter-spacing: 0.03em;
+            }
+            .table-row {
+              background-color: #ffffff;
+              box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+            }
+            .col-1 {
+              flex-basis: 10%;
+            }
+            .col-2 {
+              flex-basis: 40%;
+            }
+            .col-3 {
+              flex-basis: 25%;
+            }
+            .col-4 {
+              flex-basis: 25%;
+            }
+            .col-5 {
+                flex-basis: 25%;
+              }
+              .col-6 {
+                flex-basis: 25%;
+              }
+            
+            @media all and (max-width: 767px) {
+              .table-header {
+                display: none;
+              }
+              .table-row{
+                
+              }
+              li {
+                display: block;
+              }
+              .col {
+                
+                flex-basis: 100%;
+                
+              }
+              .col {
+                display: flex;
+                padding: 10px 0;
+                &:before {
+                  color: #6C7A89;
+                  padding-right: 10px;
+                  content: attr(data-label);
+                  flex-basis: 50%;
+                  text-align: right;
+                }
+              }
+            }
+          }
+    </style>
+</head>
+<body>
+   
+
+
+    <div class="container">
+        <h2>Pending Requests</h2>
+        <ul class="responsive-table">
+          <li class="table-header">
+            <div class="col col-1">Req Id</div>
+            <div class="col col-2">Investor Name</div>
+            <div class="col col-2">Account No.</div>
+            <div class="col col-3">Amount</div>
+            <div class="col col-4">Status</div>
+          </li>
+          <% request.forEach(req => { %>
+            <% if (!(req.accept) && req.cid==id) { %>
+          <li class="table-row">
+            <div class="col col-1" data-label="Job Id">42235</div>
+            <div class="col col-2" data-label="Customer Name"><%= req.name %></div>
+            <div class="col col-3" data-label="Amount">XXXXXXXXX</div>
+            <div class="col col-4" data-label="Payment Status"><%= req.amount %></div>
+            <div class="col col-5" data-label="Payment Status"><form action="/accept/?id=<%= id %>" method="post">
+                <input type="hidden" name="requestId" value="<%= req.id %>">
+                <button type="submit" class="btn btn-success" onclick="alert('confirm to accept. ')" style="background-color: rgb(4, 239, 4);">Accept</button>
+              </form></div>
+            <div class="col col-6" data-label="Payment Status"><form action="/reject" method="post">
+                <input type="hidden" name="requestId" value="<%= req.id %>">
+                <button type="submit" class="btn btn-success"  style="background-color: rgb(255, 0, 0);">Reject</button>
+              </form></div>
+          </li>
+          <% } %>
+          <% }); %>
+         
+        </ul>
+      </div>
+</body>
+</html>
+
+
+

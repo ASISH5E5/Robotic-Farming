@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/home.css">
+   
+    <style>
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+</head>
+<body>
+    <% if (manager) { %>
+        
+     
+<nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">Manager</label>
+    <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <button type="button" class="btn" style="font-size: 20px;margin-top:-17px;height:40px;color:white;" data-bs-toggle="modal" data-bs-target="#investModal">
+            INVESTORS
+          </button>
+          <li><a href="/investreq?id=<%= id %>">Pendings</a></li>
+        
+        <li><a href="#exampleModal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Profile</a></li>
+          
+        <li><a href="/myworks">My Works</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+    </ul>
+</nav>
+
+
+<section class="sone">
+    <div class="self">
+        <div class="mimg"></div>
+        <div class="details">
+       <strong> Name : </strong><%= manager.name %> <br>
+       <strong>MID : </strong><%= manager.MID %> <br>
+       <strong>Crop Type :  </strong><%= manager.crop %> <br>
+       <strong>Acres :</strong> 10 <br>
+       <strong>Village : </strong> <%= manager.village %> <br>
+    <strong>State</strong>  <%= manager.state %>
+    </div>
+    </div>
+    <div class="minfo">
+        <button class="totalmoney"><b>Invested. :Rs. <%=manager.sum%> /-</b> </button>
+        <button class="availmoney">
+            <b>
+              Bal-Aval. : Rs. <%= manager.sum > 0 ? manager.sum - 375000 + 750000 : 0 %> /-
+            </b>
+          </button>
+        <table class="table table-lg" style="width: 1000px; align-items:center;height:auto;margin:50px 50px 50px 150px;background-color:white ">
+            
+            <thead>
+                <tr>
+                  <th scope="col">Steps</th>
+                  <th scope="col">Step Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Amount</th>
+                </tr>
+              </thead>
+             <tbody style="background-color: #2b00ff; font-size: 20px;">
+                <tr>
+                    <th scope="row">1</th>
+                    <td><input type="text" name="task1" value="Site Selection" class="editable-input"></td>
+                    <td><input type="text" name="description1" value="Rents for sites" class="editable-input"></td>
+                    <td><input type="number" name="cost1" value="100000" class="editable-input cost" onchange="updateTotal()"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td><input type="text" name="task2" value="Land Preparation" class="editable-input"></td>
+                    <td><input type="text" name="description2" value="For tractors" class="editable-input"></td>
+                    <td><input type="number" name="cost2" value="10000" class="editable-input cost" onchange="updateTotal()"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td><input type="text" name="task3" value="Seed Selection and Treatment" class="editable-input"></td>
+                    <td><input type="text" name="description3" value="10 packets" class="editable-input"></td>
+                    <td><input type="number" name="cost3" value="20000" class="editable-input cost" onchange="updateTotal()"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td><input type="text" name="task4" value="Nursery Preparation" class="editable-input"></td>
+                    <td><input type="text" name="description4" value="Medicines" class="editable-input"></td>
+                    <td><input type="number" name="cost4" value="10000" class="editable-input cost" onchange="updateTotal()"></td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td><input type="text" name="task5" value="Seedling Transplantation:" class="editable-input"></td>
+                    <td><input type="text" name="description5" value="For Automating things" class="editable-input"></td>
+                    <td><input type="number" name="cost5" value="25000" class="editable-input cost" onchange="updateTotal()"></td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td><input type="text" name="task6" value="Water Management" class="editable-input"></td>
+                    <td><input type="text" name="description6" value="whole process" class="editable-input"></td>
+                    <td><input type="number" name="cost6" value="5000" class="editable-input cost" onchange="updateTotal()"></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td><input type="text" name="task7" value="Nutrient Application" class="editable-input"></td>
+                    <td><input type="text" name="description7" value="Ex[Urea...]" class="editable-input"></td>
+                    <td><input type="number" name="cost7" value="20000" class="editable-input cost" onchange="updateTotal()"></td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td><input type="text" name="task8" value="Harvesting and Post-Harvest" class="editable-input"></td>
+                    <td><input type="text" name="description8" value="Manual Process" class="editable-input"></td>
+                    <td><input type="number" name="cost8" value="20000" class="editable-input cost" onchange="updateTotal()"></td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td><input type="text" name="task9" value="My Fee" class="editable-input"></td>
+                    <td><input type="text" name="description9" value="Per Season" class="editable-input"></td>
+                    <td><input type="number" name="cost9" value="100000" class="editable-input cost" onchange="updateTotal()"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">Total..</th>
+                    <th style="font-weight: bold;"><strong><input type="text" name="total" value="Rs.3,75,000/-" class="editable-input" id="totalInput" readonly style="font-size: 20px;font-weight:bold;"></strong></th>
+                </tr>
+</tbody>
+
+              </table>
+             
+              <div class="points">
+                <ul style="list-style-type: disc;">
+                    <li>
+                        <div><i class="fa-solid fa-arrow-right"></i> So, Finally Available amount is = Rs.<%= manager.sum - 375000 + 750000 %>/-.</div>
+                      </li>
+                      
+                  <li><div><i class="fa-solid fa-arrow-right"></i> No of Packets Sell = 500 and each packet for 1500/- [50 packets per 1 Acre]. </div></li>
+                  <li><div> <i class="fa-solid fa-arrow-right"></i> Amount get: Rs 7,50,000/-.</div></li>
+                  <li><div><i class="fa-solid fa-arrow-right"></i> So, Finally Profit Percentage is = <%= ((manager.sum - 375000 + 750000) / manager.sum) %> %</div></li>
+                </ul>
+              </div>
+
+              
+
+    </div>
+</section>
+
+<!-- Scrollable modal -->
+<div class="modal fade modal-lg" id="investModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="investModalLabel" aria-hidden="true">    <div class="modal-dialog modal-xl"> <!-- Adjust modal size to 'modal-xl' -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-dialog modal-dialog-scrollable"> <!-- Remove 'modal-lg' and adjust modal size here if needed -->
+                <table class="table table-striped table-xxl" style="width: 1000px;"> <!-- Adjust table size to 'table-xxl' -->
+                    <tr>
+                        <th>Name</th>
+                        <th>Account No.</th>
+                        <th>Invested</th>
+                    </tr>
+                    <% request.forEach(req => { %>
+                        <% if (req.accept && req.cid==id) { %>
+                            <tr>
+                                
+                                <td><%= req.name %></td>
+                                <td>XXXXXXXXX</td>
+                                <td><%= req.amount %></td>
+                            </tr>
+                        <% } %>
+                    <% }); %>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="crop boxes">
+    <div class="box">    <div class="s box"> <h3> Step-1 :Site Selection: <a class="space" href="#" style="text-decoration: none;color:white;cursor:none ;">_____________________________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a></h3><p>Choose a well-drained field with clayey or loamy soil, ensuring good water retention and proper drainage. Select an area with ample sunlight exposure, critical for paddy growth, and convenient proximity to water sources for irrigation.</p></div><div class="pimg box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScBvNUG2Ii2nzseDlv3ZJSCd7N92jO-nKsoLgdLBRJQlJh9aqWRsN1sMjbseYpYjoMhmA&usqp=CAU" alt=""></div></div>
+    <div class="box">     <div class="s box"> <h3> Step-2 :Land Preparation: <a class="space" href="#" style="text-decoration: none;color:white">__________________________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Thoroughly plow the field to break soil compaction, enhance aeration, and facilitate root penetration. Leveling the field ensures uniform water distribution during irrigation, crucial for paddy cultivation.</p></div><div class="pimg box"><img src="https://www.agrifarming.in/wp-content/uploads/2022/06/Soil-for-Organic-Farming6.jpg" alt=""></div></div>
+    <div class="box">     <div class="s box"> <h3> Step-3 :Seed Selection and Treatment: <a class="space" href="#" style="text-decoration: none;color:white">_____________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Carefully choose high-quality paddy seeds suitable for your region, considering factors like climate and soil type. Treat seeds with fungicides or pesticides to prevent diseases, and soak them before sowing to boost germination rates.</p></div><div class="pimg box"><img src="https://www.ugaoo.com/cdn/shop/articles/shutterstock_341809025.jpg?v=1661853198" alt=""></div></div>
+    <div class="box">     <div class="s box " ><h3> Step-4 :Nursery Preparation: <a class="space" href="#" style="text-decoration: none;color:white">_______________________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Establish a dedicated nursery bed for germinating seeds. Sow pre-soaked seeds in rows, maintaining proper spacing. Adequate water and sunlight in the nursery ensure healthy seedling development for transplantation.</p></div><div class="pimg box"><img src="https://www.latiaagribusinesssolutions.com/wp-content/uploads/2018/02/m-274x137.jpg" alt=""></div></div>
+    <div class="box">     <div class="s box"><h3> Step-5:Seedling Transplantation: <a class="space" href="#" style="text-decoration: none;color:white">___________________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Transfer robust seedlings from the nursery to the main field after 25-30 days of growth. Maintain a consistent water level in the field during this stage, fostering healthy establishment and initial growth of the paddy plants.</p></div><div class="pimg box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGbCarVVI4Rvg-Kp698OFQSMxs5CPaXX7JVQ&usqp=CAU" alt=""></div></div>
+    <div class="box">     <div class="s box"><h3> Step-6 :Water Management: <a class="space" href="#" style="text-decoration: none;color:white">________________________ ___________ __</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Implement a systematic water management schedule, maintaining a shallow layer of water in the field during the vegetative and reproductive stages. Gradually increase water depth during panicle initiation and flowering. Once grains are formed, reduce water to facilitate maturation and harvesting.</p></div><div class="pimg box"><img src="https://lh3.googleusercontent.com/proxy/7FzpvPwZcVMFhtZbKo_kf9iUL5GRGfBtcLTpa8jhnAwU4dnjZF3HR-QaR_rZlGx7gn_JPi-b2Vwfhp1hilz4VdTOHwj1cw" alt=""></div></div>
+    <div class="box">     <div class="s box"><h3> Step-7 :Nutrient Application: <a class="space" href="#" style="text-decoration: none;color:white">__________________________________ ____</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Apply necessary fertilizers based on soil nutrient analysis and crop requirements. Provide nitrogen, phosphorus, and potassium at specific growth stages. Supplemental micronutrients enhance overall plant health and increase yield potential.</p></div><div class="pimg box"><img src="https://www.folio3.ai/blog/wp-content/uploads/2020/10/drones-in-agriculture-and-farming.jpg" alt=""></div></div>
+    <div class="box">     <div class="s box"><h3> Step-8 :Weed Control: <a class="space" href="#" style="text-decoration: none;color:white">_____________________________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Regularly monitor the field for weed growth and employ effective weed control measures. Manual weeding or judicious use of herbicides helps prevent competition for nutrients and ensures unhindered paddy crop growth.</p></div><div class="pimg box"><img src="https://brewerint.com/wp-content/uploads/2022/04/Chemical-Weed-Control.jpg" alt=""></div></div>
+    <div class="box">     <div class="s box"><h3> Step-9 :Pest and Disease Management: <a class="space" href="#" style="text-decoration: none;color:white">___________________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p>Monitor the crop for common pests like stem borers and diseases such as blast or bacterial leaf blight. Implement timely pesticide applications and disease-resistant varieties to protect the crop and maintain yield quality.</p></div><div class="pimg box"><img src="https://www.ceresimaging.net/hubfs/VRA_fungicide_application.001.png" alt=""></div></div>
+    <div class="box" style="height: 500px;">     <div class="s box"><h3> Step-10 :Harvesting and Post-Harvest Handling: <a class="space" href="#" style="text-decoration: none;color:white">__________________</a> <a  href="#workModal" data-bs-toggle="modal" data-bs-target="#workModal" data-bs-whatever="@getbootstrap">Post Work</a>
+    </h3><p style="height: auto;">Harvest the paddy crop when grains have matured, typically 25-35 days after flowering. Use sickles or mechanical harvesters, ensuring minimal damage to grains. After harvesting, dry the crop in the field or on clean surfaces before threshing to reduce moisture content and prevent fungal growth. Store the harvested paddy in suitable conditions to maintain quality.</p></div><div class="pimg box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzrbdmA8eeIEX_eSHoqyX3L40khhrDE--9qBdWnm4CDjrNZMjcV_UNzmgxDFqjol49RQk&usqp=CAU" alt=""></div></div>
+    </div>
+
+
+    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="formbold-main-wrapper">
+                
+                <div class="formbold-form-wrapper">
+                    <form action="/update-manager/<%= manager.id %>" method="POST">
+                        <div class="formbold-mb-5">
+                          <label for="name" class="formbold-form-label"> Full Name </label>
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            value="<%= manager.name %>"
+                            class="formbold-form-input"
+                          />
+                        </div>
+                        <div class="formbold-mb-5">
+                          <label for="email" class="formbold-form-label"> Email Address </label>
+                          <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value="<%= manager.email %>"
+                            class="formbold-form-input"
+                          />
+                        </div>
+                        <div class="formbold-mb-5">
+                          <label for="mid" class="formbold-form-label"> MID. </label>
+                          <input
+                            type="number"
+                            name="MID"
+                            id="MID"
+                            value="<%= manager.MID %>"
+                            class="formbold-form-input"
+                          />
+                        </div>
+                        <div class="flex flex-wrap formbold--mx-3">
+                          <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5 w-full">
+                              <label for="crop" class="formbold-form-label"> Crop-Type </label>
+                              <input
+                                type="text"
+                                name="crop"
+                                id="crop"
+                                value="<%= manager.crop %>"
+                                class="formbold-form-input"
+                              />
+                            </div>
+                          </div>
+                          <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5">
+                              <label for="acre" class="formbold-form-label"> No. of Acres</label>
+                              <input
+                                type="number"
+                                name="acre"
+                                id="acre"
+                                value="<%= manager.acre %>"
+                                class="formbold-form-input"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="formbold-mb-5 formbold-pt-3">
+                          <label class="formbold-form-label formbold-form-label-2">
+                            Address Details
+                          </label>
+                          <div class="flex flex-wrap formbold--mx-3">
+                            <div class="w-full sm:w-half formbold-px-3">
+                              <div class="formbold-mb-5">
+                                <label for="village" class="formbold-form-label">Village</label>
+                                <input
+                                  type="text"
+                                  name="village"
+                                  id="village"
+                                  value="<%= manager.village %>"
+                                  class="formbold-form-input"
+                                />
+                              </div>
+                            </div>
+                            <div class="w-full sm:w-half formbold-px-3">
+                              <div class="formbold-mb-5">
+                                <label for="district" class="formbold-form-label">District</label>
+                                <input
+                                  type="text"
+                                  name="district"
+                                  id="district"
+                                  value="<%= manager.district %>"
+                                  class="formbold-form-input"
+                                />
+                              </div>
+                            </div>
+                            <div class="w-full sm:w-half formbold-px-3">
+                              <div class="formbold-mb-5">
+                                <label for="state" class="formbold-form-label">State</label>
+                                <input
+                                  type="text"
+                                  name="state"
+                                  id="state"
+                                  value="<%= manager.state %>"
+                                  class="formbold-form-input"
+                                />
+                              </div>
+                            </div>
+                            <div class="w-full sm:w-half formbold-px-3">
+                              <div class="formbold-mb-5">
+                                <label for="pin" class="formbold-form-label">Pin-code</label>
+                                <input
+                                  type="text"
+                                  name="pin"
+                                  id="pin"
+                                  value="<%= manager.pin %>"
+                                  class="formbold-form-input"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <button type="submit" class="btn btn-primary formbold-btn">Update</button>
+                        </div>
+                      </form>
+                      
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="modal fade modal-lg" id="workModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Post New Work</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="formbold-main-wrapper">
+                
+                <div class="formbold-form-wrapper">
+                    <form action="/works/?id=<%= manager.id %>" method="POST">
+                        <div class="formbold-mb-5">
+                          <label for="name" class="formbold-form-label">Title of the Work </label>
+                          <input
+                            type="text"
+                            name="title"
+                            id="name"
+                            class="formbold-form-input"
+                          />
+                        </div>
+                        <div class="formbold-mb-5">
+                          <label for="email" class="formbold-form-label">Amount per day </label>
+                          <input
+                            type="number"
+                            name="amount"
+                            id="email"
+                            class="formbold-form-input"
+                          />
+                        </div>
+                       
+                        <div class="flex flex-wrap formbold--mx-3">
+                          <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5 w-full">
+                              <label for="crop" class="formbold-form-label"> Date </label>
+                              <input
+                                type="date"
+                                name="date"
+                                id="crop"
+                        
+                                class="formbold-form-input"
+                              />
+                            </div>
+                          </div>
+                          <div class="w-full sm:w-half formbold-px-3">
+                            <div class="formbold-mb-5">
+                              <label for="acre" class="formbold-form-label"> No. of Days</label>
+                              <input
+                                type="number"
+                                name="time"
+                                id="acre"
+                                class="formbold-form-input"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                       
+                           
+                            
+                          </div>
+                        </div>
+                        <div>
+                          <button type="submit" class="btn btn-primary formbold-btn">POST WORK</button>
+                        </div>
+                      </form>
+                      
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+        <script src="home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <% } else { %>
+        <script>
+          window.location.href = "/home/?id=23"; // Redirect to the home page or another appropriate page
+        </script>
+      <% } %>
+
+</body>
+</html>
